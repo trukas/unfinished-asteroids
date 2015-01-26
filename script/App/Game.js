@@ -93,6 +93,9 @@ app.game = {
       case "up":
         this.players[0].up = true;
         break;
+      case "down":
+        this.players[0].down = true;
+        break;
     }
   },
 
@@ -105,10 +108,13 @@ app.game = {
         this.players[0].left = false;
         break;
       case "right":
-        this.players[0].left = false  ;
+        this.players[0].right = false;
         break;
       case "up":
         this.players[0].up = false;
+        break;
+      case "down":
+        this.players[0].down = false;
         break;
     }
   }

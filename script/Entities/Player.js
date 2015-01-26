@@ -102,8 +102,17 @@ ENGINE.Player.prototype = {
 
     /* speed and acceleration */
 
-    if (this.up) this.speed = Math.min(this.maxSpeed, this.speed + this.acceleration * delta);
-    else this.speed = Math.max(0, this.speed - this.deacceleration * delta);
+    if (this.up) {
+      this.speed = Math.min(this.maxSpeed, this.speed + this.acceleration * delta);
+    } else if (this.down) {
+      this.speed = Math.max(-this.maxSpeed, this.speed - this.acceleration * delta);
+    } else {
+      if (this.speed > 0) {
+        this.speed = Math.max(0, this.speed - this.deacceleration * delta);
+      } else {
+        this.speed = Math.min(0, this.speed + this.deacceleration * delta);
+      }
+    }
 
     /* movement */
 
